@@ -1,3 +1,9 @@
+resources:
+  repositories:
+  - repository: PatchOrchestrationApplication
+    type: git
+    name: Infrastructure/PatchOrchestrationApplication
+
 trigger:
 - master
 
@@ -5,6 +11,9 @@ pool:
   vmImage: 'VS2017-Win2016'
 
 steps:
+- checkout: self
+- checkout: PatchOrchestrationApplication
+
 - task: PowerShell@2
   displayName: 'Build Code'
   inputs:
