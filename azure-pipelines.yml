@@ -1,8 +1,8 @@
 resources:
   repositories:
-  - repository: PatchOrchestrationApplication
-    type: git
-    name: Infrastructure/PatchOrchestrationApplication
+  - repository: 'PatchOrchestrationApplication'
+    type: 'git'
+    name: 'PatchOrchestrationApplication'
 
 trigger:
 - master
@@ -14,26 +14,21 @@ steps:
 - checkout: self
 - checkout: PatchOrchestrationApplication
 
-- task: PowerShell@2
-  displayName: 'Build Code'
-  inputs:
-    targetType: filePath
-    filePath: './build.ps1'
-
 - task: CmdLine@2
   inputs:
     script: 'dir /s'
     workingDirectory: '$(Build.SourcesDirectory)'
 
-#- task: CopyFiles@2
-#  inputs:
-#    SourceFolder: '$(Build.SourcesDirectory)\out\Release\'
-#    Contents: '**'
-#    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+- task: PowerShell@2
+  displayName: 'Build Code'
+  inputs:
+    workingDirectory: '$(Build.SourcesDirectory)\Service-Fabric-POA'
+    targetType: filePath
+    filePath: './build.ps1'
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\out\Release\PatchOrchestrationApplication'
+    SourceFolder: '$(Build.SourcesDirectory)\Service-Fabric-POA\out\Release\PatchOrchestrationApplication'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)\CodePackage'
 
