@@ -16,11 +16,17 @@ steps:
     script: 'dir /s'
     workingDirectory: '$(Build.SourcesDirectory)'
 
+#- task: CopyFiles@2
+#  inputs:
+#    SourceFolder: '$(Build.SourcesDirectory)\out\Release\'
+#    Contents: '**'
+#    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\out\Release\'
+    SourceFolder: '$(Build.SourcesDirectory)\out\Release\PatchOrchestrationApplication'
     Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\CodePackage'
 
 - task: PublishBuildArtifacts@1
   inputs:
