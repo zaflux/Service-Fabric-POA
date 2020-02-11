@@ -10,6 +10,11 @@ steps:
   inputs:
     targetType: filePath
     filePath: './build.ps1'
+
+- task: CmdLine@2
+  inputs:
+    script: 'dir /s'
+    workingDirectory: '$(Build.SourcesDirectory)'
     
 - task: PublishBuildArtifacts@1
   inputs:
