@@ -20,10 +20,10 @@ steps:
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)\out\Release\'
     Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)''
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '
+    PathtoPublish: ''
     ArtifactName: 'POA'
     publishLocation: 'Container'
