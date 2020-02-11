@@ -24,6 +24,6 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: ''
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'POA'
     publishLocation: 'Container'
