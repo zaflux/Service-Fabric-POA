@@ -32,6 +32,12 @@ steps:
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)\CodePackage'
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: : '$(Build.SourcesDirectory)\PatchOrchestrationApplication'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
