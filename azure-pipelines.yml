@@ -34,9 +34,15 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\PatchOrchestrationApplication'
+    SourceFolder: '$(Build.SourcesDirectory)\PatchOrchestrationApplication\ApplicationParameters'
     Contents: '**'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\ApplicationParameters'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)\PatchOrchestrationApplication\PublishProfiles'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\PublishProfiles'
 
 - task: PublishBuildArtifacts@1
   inputs:
