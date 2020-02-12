@@ -24,7 +24,7 @@ steps:
   inputs:
     workingDirectory: '$(Build.SourcesDirectory)\Service-Fabric-POA'
     targetType: filePath
-    filePath: './build.ps1'
+    filePath: '$(Build.SourcesDirectory)\Service-Fabric-POA\build.ps1'
 
 - task: CopyFiles@2
   inputs:
